@@ -1,0 +1,14 @@
+import sys
+from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
+from psycopg2 import connect
+
+con = connect(user='postgres', host = 'localhost', password='postgres')
+print("DB connection opened")
+#dbname = "test2"
+for i in range(4, 6):
+  con.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
+  cur = con.cursor()
+  cur.execute('DROP DATABASE ' + 'test' + str(i))
+  #print('DB\t'+dbname+'\tis DELETED')
+  cur.close()
+con.close()
