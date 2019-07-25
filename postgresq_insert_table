@@ -1,0 +1,29 @@
+
+import sys
+from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
+from psycopg2 import connect
+import psycopg2
+def tableInsert(ID,NAME,AGE,ADDRESS,SALARY):
+        try:
+                con = connect(database='test6', user='postgres', host = 'localho                                                                                                             st', password='postgres')
+                print("DB connection opened")
+#dbname = "test2"
+#for i in range(4, 6):
+                con.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
+                cur = con.cursor()
+                insert_query = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY)                                                                                                              VALUES (%s, %s, %s, %s, %s);"
+                data = (ID,NAME,AGE,ADDRESS,SALARY)
+                cur.execute(insert_query, data)
+  #print('DB\t'+dbname+'\tis DELETED')
+                con.commit()
+                count = cur.rowcount
+                print('count', "Inserting table")
+        except (Exception, psycopg2.DatabaseError) as error:
+#       if(con):
+                print("Failed to insert table", error)
+        finally:
+                if(con):
+#                       cursor.close()
+                        con.close()
+                        print("PostgreSQL connection is closed")
+tableInsert(15,'moti',32,'RMM',6000)
