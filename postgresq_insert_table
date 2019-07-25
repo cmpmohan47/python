@@ -5,7 +5,7 @@ from psycopg2 import connect
 import psycopg2
 def tableInsert(ID,NAME,AGE,ADDRESS,SALARY):
         try:
-                con = connect(database='test6', user='postgres', host = 'localho                                                                                                             st', password='postgres')
+                con = connect(database='test6', user='test', host = 'localho                                                                                                             st', password='postgres')
                 print("DB connection opened")
 #dbname = "test2"
 #for i in range(4, 6):
@@ -26,4 +26,4 @@ def tableInsert(ID,NAME,AGE,ADDRESS,SALARY):
 #                       cursor.close()
                         con.close()
                         print("PostgreSQL connection is closed")
-tableInsert(15,'moti',32,'RMM',6000)
+tableInsert(15,'mohan',32,'RMM',6000)
