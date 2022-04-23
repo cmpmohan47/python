@@ -1,2 +1,5 @@
-# python
-python code
+Command 
+
+ python status.py status xyz http_prd
+
+
